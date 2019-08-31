@@ -2,6 +2,18 @@
 
 namespace Example01 {
 	public class Character : MonoBehaviour, ICharacter {
+		// Não se se você já conhecia propriedades, mas elas
+		// são uma maneira de proteger o acesso a variáveis
+		// dos scripts, seja fazendo alguma validação ou
+		// limitando quem que pode escrevê-las.
+
+		// Nesse caso estou usando para 2 coisas:
+		// a) Garantir que a vida e estamina não estejam maiores
+		//    que o valor máximo delas;
+		// b) Atualizar a HUD cada vez que um valor muda, dessa
+		//    maneira não precisamos atualizar a HUD a cada
+		//    Update, que seria desperdício de processamento.
+
 		public float CurrentHealth {
 			get => _currentHealth;
 			set {
@@ -10,6 +22,9 @@ namespace Example01 {
 			}
 		}
 
+		// Essa é a sintaxe simplificada para quando você
+		// tem uma propriedade que o valor depende de outros
+		// valores, e não pode ser escrita.
 		public float MaxHealth => Constitution * 10;
 
 		public float CurrentStamina {
@@ -74,6 +89,15 @@ namespace Example01 {
 		}
 
 		private void Start() {
+			// Esse truque permite que você crie cenas
+			// com personagens que começam com valores de vida
+			// diferentes da máxima. Por exemplo você poderia
+			// ter uma fase em que o vilão começa com metade da
+			// vida, é só digitar o quanto de vida ele vai ter
+			// no inspetor.
+
+			// Se deixar em 0, ele começa com a vida máxima por padrão.
+
 			if (CurrentHealth <= 0) {
 				CurrentHealth = MaxHealth;
 			}

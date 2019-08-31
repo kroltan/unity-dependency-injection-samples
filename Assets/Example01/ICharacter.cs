@@ -9,8 +9,8 @@
 		// com base na constituição, então não tem por que ninguém
 		// precisar alterar a vida em si.
 
-		// Simplifiquei os atributos aqui para ficar mais fácil
-		// de ilustrar
+		// Simplifiquei a quantidade de atributos aqui para ficar
+		// mais fácil de ilustrar
 
 		float CurrentHealth { get; set; }
 		float MaxHealth { get; }

@@ -3,7 +3,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Example01 {
+	/// <summary>
+	/// HUD para personagens não controlados pelo jogador.
+	/// </summary>
+	/// <remarks>
+	/// Ela é mais simples que a HUD do jogador, pois o usuário
+	/// não precisa necessariamente saber todos os dados do
+	/// inimigo ou NPC.
+	/// </remarks>
 	public class EnemyHud : MonoBehaviour, IHud {
+
 		[SerializeField]
 		private Image _healthBar;
 

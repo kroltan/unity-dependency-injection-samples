@@ -10,15 +10,17 @@ namespace Example01 {
 		public IMovement Movement { get; set; }
 
 		private void Awake() {
+			// Coletar os scripts com base na interface que eles implementam,
+			// ao invés do script diretamente, permite-nos anexar scripts
+			// diferentes ao objeto desde que cumpram as funções definidas
+			// na interface.
 			Hud = GetComponent<IHud>();
 			Character = GetComponent<ICharacter>();
 			Movement = GetComponent<IMovement>();
 
-			Debug.Log(name);
-			Debug.Log($"{nameof(Hud)}: {Hud}");
-			Debug.Log($"{nameof(Character)}: {Character}");
-			Debug.Log($"{nameof(Movement)}: {Movement}");
-
+			// Depois que temos tudo em mãos, passamos o balde para todos
+			// os scripts, isso permite que eles tenham acesso uns aos
+			// outros, sem depender dos detalhes de implementação dos mesmos.
 			Hud.CollectDependencies(this);
 			Character.CollectDependencies(this);
 			Movement.CollectDependencies(this);
